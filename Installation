@@ -4,5 +4,5 @@ curl -L \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <YOUR-TOKEN>" \
   -H "X-GitHub-Api-Version: 2026-03-10" \
-  https://api.github.com/app/installations/1/access_tokens \
+  https://api.github.com/app/installations/<INSTALLATION_ID>/access_tokens \
   -d '{"repositories":["Hello-World"],"permissions":{"issues":"write","contents":"read"}}'
