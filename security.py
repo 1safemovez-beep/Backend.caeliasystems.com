@@ -49,9 +49,9 @@ class SecureVault:
             return self.fernet.decrypt(encrypted_data.encode()).decode()
         except Exception as e:
             print(f"[SecureVault] Decryption error: {str(e)}")
-            return encrypted_data
+            raise Exception("VAULT_LOCKED: decryption failed, refusing plaintext")
 
     @staticmethod
     def generate_key():
-        """Helper to generate a new key for the user to set in their secrets."""
+        """Helper to generate a new key to set in secrets."""
         return Fernet.generate_key().decode()
