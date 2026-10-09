@@ -1,0 +1,18 @@
+# Railway service configuration for Caelia Motherboard Backend
+
+[build]
+builder = "dockerfile"
+buildCommand = "npm install"
+
+[deploy]
+startCommand = "node src/index.js"
+healthcheckPath = "/"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
+
+# Port mapping
+[[services]]
+name = "backend"
+port = 8787
+protocol = "http"
