@@ -40,7 +40,9 @@ class SecureVault:
 
     def decrypt(self, encrypted_data):
         """Decrypts data if a key is available; otherwise returns raw data."""
-        if not self.fernet or not encrypted_data:
+        if not self.fernet:
+            raise Exception("VAULT_LOCKED: no key, refusing plaintext")
+        if not encrypted_data:
             return encrypted_data
             
         try:
