@@ -36,7 +36,7 @@ class SecureVault:
             return self.fernet.encrypt(data).decode()
         except Exception as e:
             print(f"[SecureVault] Encryption error: {str(e)}")
-            return data
+            raise Exception("VAULT_LOCKED: encryption failed, refusing plaintext")
 
     def decrypt(self, encrypted_data):
         """Decrypts data if a key is available; otherwise returns raw data."""
