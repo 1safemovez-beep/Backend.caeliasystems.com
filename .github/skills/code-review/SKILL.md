@@ -14,7 +14,7 @@ Review code changes in this repo for quality, security, and Caelia architecture 
 
 ## Review checklist
 1. **Secrets**: No API keys, tokens, or passwords in the code. All secrets must come from environment variables.
-2. **Caelia architecture**: Changes must follow CAELIA_COPILOT_MASTER_INSTRUCTIONS.md — flag anything that breaks those rules as [AWAITING PART], never guess.
+2. **Caelia architecture**: Changes must follow `CAELIA_COPILOT_MASTER_INSTRUCTIONS (1).md` — flag anything that breaks those rules as [AWAITING PART], never guess.
 3. **API routes**: New endpoints must be documented. Check that /api/health, /api/chat, /api/teach, /api/failsafe, /api/engines/:id still work.
 4. **Compactness**: Keep the backend lean. No unnecessary dependencies.
 5. **Error handling**: Failures must return useful JSON, not crash the server.
