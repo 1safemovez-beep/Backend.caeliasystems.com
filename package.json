@@ -1,1 +1,41 @@
-{"dependencies":{"@discordjs/voice":"^0.19.0","discord.js":"^14.27.0","express":"^4.19.2","multer":"^1.4.5-lts.1"},"description":"Caelia Motherboard backend — server-side foundation for the QuantVantageAI/Caelia motherboard dashboard. Alicia is the owner.","engines":{"node":">=22.5.0"},"license":"UNLICENSED","main":"src/index.js","name":"caelia-motherboard-backend","private":true,"scripts":{"dev":"node --watch src/index.js","start":"node src/index.js"},"type":"module","version":"1.0.0"}
+{
+  "name": "caelia-motherboard-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Caelia Motherboard backend — server-side foundation for the QuantVan ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "discord",
+    "backend",
+    "quantvan",
+    "caelia",
+    "ai",
+    "evaluation"
+  ],
+  "author": "Alicia",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.19.0",
+    "discord.js": "^14.27.0",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "better-sqlite3": "^11.7.0",
+    "stripe": "^15.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8"
+  }
+}
