@@ -1,3 +1,7 @@
+---
+name: code-review
+description: Review pull requests for quality, security, and Caelia architecture compliance.
+---
 # Code Review Skill
 
 ## Purpose
