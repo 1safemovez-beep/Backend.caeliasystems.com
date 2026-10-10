@@ -11,7 +11,7 @@ RUN npm install --omit=dev
 
 # Install Python dependencies
 COPY requirements.txt ./
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --break-systems-packages --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . ./
