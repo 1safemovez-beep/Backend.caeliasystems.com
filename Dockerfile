@@ -1,7 +1,7 @@
 FROM node:24-alpine
 
 # Install Python and pip
-RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache python3 py3-pip unzip
 
 WORKDIR /app
 
@@ -24,4 +24,4 @@ ENV PORT=8787
 EXPOSE 8787
 
 # Alicia supplies .env at deploy time (mounted secret, never baked in).
-CMD ["node", "index.js"]
+CMD ["sh", "extract-and-start.sh"]
