@@ -1,0 +1,8 @@
+curl -L \
+  -X POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  -H "X-GitHub-Api-Version: 2026-03-10" \
+  https://api.github.com/app/installations/<INSTALLATION_ID>/access_tokens \
+  -d '{"repositories":["Hello-World"],"permissions":{"issues":"write","contents":"read"}}'
