@@ -2,11 +2,11 @@
 
 [build]
 builder = "dockerfile"
-buildCommand = "npm install"
+buildCommand = "npm ci"
 
 [deploy]
-startCommand = "node src/index.js"
-healthcheckPath = "/"
+startCommand = "npm start"
+healthcheckPath = "/health"
 healthcheckTimeout = 30
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 5

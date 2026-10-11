@@ -25,9 +25,13 @@ cp .env.example .env
 # set OWNER_TOKEN in .env to a long random string (Alicia's hands only)
 ./start.sh        # or: npm install && npm start
 # For live AI evaluations (optional at dev time):
-#   pip install -r src/engines/python/requirements.txt
+#   pip install -r requirements.txt
 #   and set ANTHROPIC_API_KEY in .env (Alicia's key, her hands only)
 ```
+
+The bundled `CAELIA-BACKEND-SAVE.zip` is extracted into
+`motherboard-backend-2026-10-03/` on first start; that generated directory is
+intentionally not tracked.
 
 Server listens on `:8787` (or `$PORT`). Health check:
 
@@ -249,7 +253,7 @@ storage/              uploaded file bytes
   with all containers EMPTY.
 - `ANTHROPIC_API_KEY` — enables LIVE AI evaluations via the bundled runner.
   Without it the engine honestly reports `ENGINE_NEEDS_KEY`. Her hands only,
-  never in chat, never committed. Also `pip install -r src/engines/python/requirements.txt`
+  never in chat, never committed. Also `pip install -r requirements.txt`
   on the host for the `anthropic` package.
 - `STRIPE_SECRETS_KEY` (optional) — only for paid report-unlock verification.
 - `CAELIA_BRAIN_URL`, `QV_ENGINE_URL` — when Kallel's integration lands

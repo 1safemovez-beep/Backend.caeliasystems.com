@@ -7,15 +7,14 @@ WORKDIR /app
 
 # Install Node dependencies
 COPY package.json package-lock.json* ./
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 # Install Python dependencies
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
 
-# Copy application code
+# Copy application archive and runtime configuration.
 COPY . ./
-COPY .env.example ./
 
 # Create required directories
 RUN mkdir -p data storage

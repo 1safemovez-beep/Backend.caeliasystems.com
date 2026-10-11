@@ -1,0 +1,8 @@
+node_modules/
+motherboard-backend-2026-10-03/
+data/*.sqlite
+data/*.sqlite-*
+storage/*
+!storage/.gitkeep
+__pycache__/
+*.py[cod]

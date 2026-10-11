@@ -1,19 +1,18 @@
 #!/bin/bash
 
-# Extract ZIP files during Docker build
-cd /app
+# The tracked backend source is bundled in this archive. Extract it into a
+# deterministic local directory when it is not already available.
+cd "$(dirname "$0")"
 
-if [ -f "CAELIA-BACKEND-SAVE.zip" ]; then
+APP_DIR="motherboard-backend-2026-10-03"
+
+if [ ! -f "$APP_DIR/src/index.js" ]; then
+  if [ ! -f "CAELIA-BACKEND-SAVE.zip" ]; then
+    echo "Missing CAELIA-BACKEND-SAVE.zip and $APP_DIR/src/index.js" >&2
+    exit 1
+  fi
   echo "Extracting CAELIA-BACKEND-SAVE.zip..."
   unzip -q CAELIA-BACKEND-SAVE.zip
-  rm CAELIA-BACKEND-SAVE.zip
 fi
 
-if [ -f "Caelia_Backend_Core.zip" ]; then
-  echo "Extracting Caelia_Backend_Core.zip..."
-  unzip -q Caelia_Backend_Core.zip
-  rm Caelia_Backend_Core.zip
-fi
-
-# Start the application
-node index.js
+exec node --env-file-if-exists=.env "$APP_DIR/src/index.js"
