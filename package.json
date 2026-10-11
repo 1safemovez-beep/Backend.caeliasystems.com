@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Caelia Motherboard backend — server-side foundation for the QuantVan ecosystem",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
+    "dev": "node --watch src/index.js",
     "test": "jest"
   },
   "keywords": [
@@ -18,7 +18,7 @@
     "evaluation"
   ],
   "author": "Alicia",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "dependencies": {
     "@discordjs/voice": "^0.19.0",
     "discord.js": "^14.27.0",
@@ -31,11 +31,10 @@
     "stripe": "^15.12.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4",
     "jest": "^29.7.0"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=22.5.0",
     "python": ">=3.8"
   }
 }
