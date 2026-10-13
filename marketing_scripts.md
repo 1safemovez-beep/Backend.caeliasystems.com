@@ -13,7 +13,7 @@ Use these copy templates to drive traffic to your $4.99 report offer.
 ✅ ROI & Break-even numbers
 ✅ Competitor "Better Method" analysis
 ✅ Custom Monetization Hacks
-4/ Stop guessing. Get your 10-page roadmap for the price of a coffee ($4.99).
+4/ Stop guessing. Get your 12-page roadmap for the price of a coffee ($4.99).
 [LINK] #AI #SaaS #BuildInPublic
 
 ---
@@ -42,7 +42,7 @@ You have a great idea for an app. But before you write a single line of code or 
 - What is your actual break-even point?
 - How do you optimize for mobile smoothness from Day 1?
 
-We just launched the **QuantVantage AI**. It’s a professional-grade analytical tool that synthesizes 2026 market data into a 10-page strategic roadmap for your specific idea.
+We just launched the **QuantVantage AI**. It’s a professional-grade analytical tool that synthesizes 2026 market data into a 12-page strategic roadmap for your specific idea.
 
 For a limited time, we’re offering these deep-dives for just **$4.99**.
 
