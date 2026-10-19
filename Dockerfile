@@ -1,7 +1,7 @@
 FROM node:24-alpine
 
-# Install Python and pip
-RUN apk add --no-cache python3 py3-pip unzip
+# Install Python, pip, and build tools (needed to compile native modules such as better-sqlite3)
+RUN apk add --no-cache python3 py3-pip unzip make g++
 
 WORKDIR /app
 
