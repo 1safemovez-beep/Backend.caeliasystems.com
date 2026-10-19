@@ -23,5 +23,4 @@ if [ -z "$APP_ENTRY" ]; then
 fi
 
 APP_DIR=${APP_ENTRY%/src/index.js}
-cd "$APP_DIR"
-exec node src/index.js
+exec node "$APP_ENTRY"
