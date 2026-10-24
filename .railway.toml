@@ -5,8 +5,8 @@ builder = "dockerfile"
 buildCommand = "npm install"
 
 [deploy]
-startCommand = "node src/index.js"
-healthcheckPath = "/"
+startCommand = "sh extract-and-start.sh"
+healthcheckPath = "/health"
 healthcheckTimeout = 30
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 5

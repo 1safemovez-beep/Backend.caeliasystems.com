@@ -188,7 +188,7 @@ crashing; rotate it via `POST /api/vault/secrets/:id/rotate`.
 
 The backend is intended to run at `https://backend.caeliasystems.com`.
 The Motherboard dashboard is canonical at `https://motherboard.caeliasystems.com`.
-The apex domains `https://caeliasystems.com` and `https://www.caeliasystems.com` should be redirected to the Motherboard dashboard at the DNS/proxy layer (Cloudflare), while this backend also contains a defensive redirect for requests that reach it directly.
+The Motherboard is hosted at `https://motherboard.caeliasystems.com` with Cloudflare. Keep `https://caeliasystems.com` and `https://www.caeliasystems.com` on the public site; do not redirect them to the Motherboard.
 
 Required environment values:
 
@@ -208,7 +208,7 @@ Do not put `OWNER_TOKEN`, `VAULT_MASTER_KEY`, Anthropic keys, Stripe keys, Disco
 
 - **Always-on host (recommended):** `Dockerfile` included. Mount `.env` as a
   secret (never bake it into the image). Point the dashboard's
-  `BrainAPI.endpoint` at `https://<host>/api` and set `connected:true`.
+  `BrainAPI.endpoint` at `https://backend.caeliasystems.com/api` and set `connected:true`.
 - **Cloudflare Workers:** see `wrangler.toml` — it's a sketch. The D1/R2/Hono
   port is Kallel's call during integration.
 

@@ -15,5 +15,12 @@ if [ -f "Caelia_Backend_Core.zip" ]; then
   rm Caelia_Backend_Core.zip
 fi
 
-# Start the application
-node index.js
+# The backend archive stores the application in a versioned directory.
+APP_ENTRY=$(find /app -type f -path '*/src/index.js' -print -quit)
+if [ -z "$APP_ENTRY" ]; then
+  echo "Could not find the backend entry point (*/src/index.js)." >&2
+  exit 1
+fi
+
+APP_DIR=${APP_ENTRY%/src/index.js}
+exec node "$APP_ENTRY"
