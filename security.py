@@ -1,18 +1,9 @@
 import os
 from cryptography.fernet import Fernet
-import streamlit as st
 
 class SecureVault:
     def __init__(self):
-        # Get encryption key from Streamlit secrets or environment
-        self.key = None
-        try:
-            self.key = st.secrets.get("QV_DATA_ENCRYPTION_KEY")
-        except:
-            pass
-            
-        if not self.key:
-            self.key = os.getenv("QV_DATA_ENCRYPTION_KEY")
+        self.key = os.getenv("QV_DATA_ENCRYPTION_KEY")
             
         self.fernet = None
         
@@ -24,7 +15,7 @@ class SecureVault:
                 self.fernet = None
 
     def encrypt(self, data):
-        """Encrypts data if a key is available; otherwise returns raw data."""
+        """Encrypt data, refusing to return plaintext when encryption is unavailable."""
         if not self.fernet:
             raise Exception("VAULT_LOCKED: no key, refusing plaintext")
         if not data:
@@ -39,7 +30,7 @@ class SecureVault:
             raise Exception("VAULT_LOCKED: encryption failed, refusing plaintext")
 
     def decrypt(self, encrypted_data):
-        """Decrypts data if a key is available; otherwise returns raw data."""
+        """Decrypt data, refusing to return ciphertext when decryption fails."""
         if not self.fernet:
             raise Exception("VAULT_LOCKED: no key, refusing plaintext")
         if not encrypted_data:
