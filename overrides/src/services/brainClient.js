@@ -4,7 +4,7 @@
 //   CAELIA_BRAIN_TOKEN = the brain service's OWNER_TOKEN (server-side only, never in the browser)
 import { config } from "../config.js";
 
-const TIMEOUT_MS = Number(process.env.CAELIA_BRAIN_TIMEOUT_MS || 15000);
+const TIMEOUT_MS = Number(process.env.CAELIA_BRAIN_TIMEOUT_MS || 45000);
 
 function base() {
   return String(config.caeliaBrainUrl || process.env.CAELIA_BRAIN_URL || "")
