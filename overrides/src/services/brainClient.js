@@ -62,6 +62,11 @@ export function reasoningMode(result) {
   return result?.loop?.reasoning?.mode || null;
 }
 
+// Generic owner-authenticated call to the brain (used by the Motherboard's admin views).
+export function brainCall(path, method = "GET", body) {
+  return call(path, { method, body });
+}
+
 export function brainHealth() {
   return call("/api/health", { auth: false });
 }
