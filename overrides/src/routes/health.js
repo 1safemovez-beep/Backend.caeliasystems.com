@@ -1,6 +1,11 @@
 import { Router } from "express";
 import { brainConfigured, brainHealth } from "../services/brainClient.js";
+import { loginRouter } from "./login.js";
+import { passwordConfigured } from "../services/session.js";
 export const healthRouter = Router();
+
+// Sign-in routes are public (they sit before the /api auth gate).
+healthRouter.use(loginRouter);
 
 // Public — no auth. Load balancers and uptime checks hit this.
 healthRouter.get("/health", (_req, res) => {
@@ -16,6 +21,7 @@ healthRouter.get("/api/health", async (_req, res) => {
     ok: true,
     service: "caelia-motherboard-backend",
     time: new Date().toISOString(),
+    passwordSignIn: passwordConfigured(),
     brain: {
       urlSet: configured.url,
       tokenSet: configured.token,
