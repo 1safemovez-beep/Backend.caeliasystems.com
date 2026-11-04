@@ -39,6 +39,9 @@ chatRouter.post("/chat", async (req, res, next) => {
       reply,
       actions: Array.isArray(result?.actions) ? result.actions : [],
       reasoning: mode,
+      // What she looked up and the web pages she used (for showing sources).
+      research: Array.isArray(result?.research) ? result.research : [],
+      sources: Array.isArray(result?.sources) ? result.sources : [],
       note: reply
         ? undefined
         : "Caelia's brain received this and logged it. Her reasoning model isn't attached yet, so she has no spoken answer.",
