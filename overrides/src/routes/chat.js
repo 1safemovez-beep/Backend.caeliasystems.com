@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { auditLog } from "../middleware/audit.js";
 import { brainThink, replyText, reasoningMode } from "../services/brainClient.js";
+import { caeliaRouter } from "./caelia.js";
 export const chatRouter = Router();
+// Caelia overview + tutor queue (same /api mount, so owner sign-in is required).
+chatRouter.use(caeliaRouter);
 
 // POST /api/chat { message } -> { reply, actions, brainConnected, note }
 // Used by the Motherboard dashboard and the Caelia avatar.
