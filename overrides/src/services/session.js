@@ -14,7 +14,8 @@ const DAYS = Number(process.env.SESSION_DAYS || 90);
 const PER_IP_MAX = 5, PER_IP_WINDOW = 15 * 60_000;
 const GLOBAL_MAX = 30, GLOBAL_WINDOW = 60 * 60_000;
 
-const password = () => String(process.env.OWNER_PASSWORD || "");
+// Ignore spaces/quotes accidentally saved around the password in Railway.
+const password = () => String(process.env.OWNER_PASSWORD || "").trim().replace(/^(["'])(.*)\1$/, "$2");
 export const passwordConfigured = () => password().length > 0 && !!config.ownerToken;
 
 function key() {
@@ -49,7 +50,8 @@ export function verifySession(token) {
 export function passwordMatches(given) {
   if (!passwordConfigured() || typeof given !== "string") return false;
   // Compare fixed-length hashes so timing doesn't reveal anything.
-  const a = createHash("sha256").update(given).digest();
+  // Ignore spaces a phone or copy-paste added before/after the password.
+  const a = createHash("sha256").update(given.trim()).digest();
   const b = createHash("sha256").update(password()).digest();
   return timingSafeEqual(a, b);
 }
