@@ -31,4 +31,10 @@ if [ -d /app/overrides ]; then
   cp -R /app/overrides/. "$APP_DIR/"
 fi
 
-exec node "$APP_ENTRY"
+# OpenTelemetry: the loader hook and register module must load before the app (ES modules).
+# otel-sqlite.mjs adds CLIENT spans for node:sqlite. Exporter settings come from Railway's OTEL_* variables.
+exec node \
+  --experimental-loader=@opentelemetry/instrumentation/hook.mjs \
+  --import @opentelemetry/auto-instrumentations-node/register \
+  --import /app/otel-sqlite.mjs \
+  "$APP_ENTRY"
