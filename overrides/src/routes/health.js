@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { brainConfigured, brainHealth } from "../services/brainClient.js";
+import { brainConfigured, brainHealth, brainCall } from "../services/brainClient.js";
 import { loginRouter } from "./login.js";
 import { passwordConfigured } from "../services/session.js";
 export const healthRouter = Router();
@@ -17,6 +17,13 @@ healthRouter.get("/health", (_req, res) => {
 healthRouter.get("/api/health", async (_req, res) => {
   const configured = brainConfigured();
   const h = configured.url ? await brainHealth() : { ok: false, error: "BRAIN_URL_NOT_SET" };
+  // Reachable isn't enough: also check the brain accepts CAELIA_BRAIN_TOKEN, so the
+  // avatar doesn't show "connected" while every message is refused. Returns yes/no only.
+  let keyAccepted;
+  if (h.ok && configured.token) {
+    const k = await brainCall("/api/tracer/stats");
+    keyAccepted = k.ok ? true : k.status === 401 ? false : undefined;
+  }
   res.json({
     ok: true,
     service: "caelia-motherboard-backend",
@@ -27,6 +34,7 @@ healthRouter.get("/api/health", async (_req, res) => {
       tokenSet: configured.token,
       reachable: !!h.ok,
       authConfigured: h.ok ? !!h.data?.authConfigured : undefined,
+      keyAccepted,
       error: h.ok ? undefined : h.error,
     },
   });
