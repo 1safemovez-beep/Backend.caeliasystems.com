@@ -16,7 +16,7 @@ if [ -f "Caelia_Backend_Core.zip" ]; then
 fi
 
 # The backend archive stores the application in a versioned directory.
-APP_ENTRY=$(find /app -type f -path '*/src/index.js' -not -path '*/node_modules/*' -not -path '/app/overrides/*' -print -quit)
+APP_ENTRY=$(find /app -type f -path '*/src/index.js' -not -path '*/node_modules/*' -not -path '/app/overrides/*' -not -path '/app/readable-src/*' -print -quit)
 if [ -z "$APP_ENTRY" ]; then
   echo "Could not find the backend entry point (*/src/index.js)." >&2
   exit 1
