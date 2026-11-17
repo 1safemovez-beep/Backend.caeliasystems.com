@@ -1,0 +1,22 @@
+# Cloudflare Workers adapter — SKETCH (not a drop-in deploy).
+# This backend uses node:sqlite + Express; Workers need the D1/DO equivalents.
+# Kallel's integration decides the always-on host. Two paths:
+#
+# Path A (recommended): keep this Node server on an always-on host
+# (VPS / Render / Railway / Fly.io). The dashboard's BrainAPI.endpoint
+# points at https://<host>/api. Zero code changes.
+#
+# Path B: port to Workers.
+#   - Replace node:sqlite with a D1 database (wrangler d1).
+#   - Replace Express with Hono or itty-router (Workers-compatible).
+#   - Replace multer disk uploads with R2 (wrangler r2).
+#   - Secrets via `wrangler secret put OWNER_TOKEN` (never in wrangler.toml).
+#
+# name = "caelia-motherboard-backend"
+# main = "src/worker.js"            # <- does not exist yet; see Path B
+# compatibility_date = "2026-10-03"
+#
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "caelia-motherboard"
+# database_id = "PASTE_D1_ID_HERE"
