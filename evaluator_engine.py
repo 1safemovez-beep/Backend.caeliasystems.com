@@ -50,7 +50,7 @@ class QuantVantageAI:
 
     def generate_report(self, template_path=None, output_path=None):
         if not template_path:
-            template_path = "templates/report_template.md"
+            template_path = os.path.join(os.path.dirname(__file__), "templates", "report_template.md")
 
         if not output_path:
             output_path = f"app_{self.target_name.lower().replace(' ', '_')}_analysis.md"

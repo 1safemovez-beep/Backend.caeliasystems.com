@@ -1,1 +1,2 @@
 anthropic>=0.40.0  # required for live AI evaluations (Alicia supplies ANTHROPIC_API_KEY at deploy)
+cryptography>=50.0.0
