@@ -5,7 +5,7 @@
   "description": "Caelia Motherboard backend — server-side foundation for the QuantVan ecosystem",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "sh extract-and-start.sh",
     "dev": "node --watch src/index.js",
     "test": "jest"
   },
